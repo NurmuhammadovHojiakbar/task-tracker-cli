@@ -10,30 +10,13 @@ const colors = Object.freeze({
 });
 
 class Color {
-  constructor() {}
-  black(text) {
-    console.log(`\x1b[${colors.black}m ${text} \x1b[0m`);
+  constructor() {
+    Object.keys(colors).forEach((color) => {
+      this[color] = (text) => this.logColor(colors[color], text);
+    });
   }
-  red(text) {
-    console.log(`\x1b[${colors.red}m ${text} \x1b[0m`);
-  }
-  green(text) {
-    console.log(`\x1b[${colors.green}m ${text} \x1b[0m`);
-  }
-  yellow(text) {
-    console.log(`\x1b[${colors.yellow}m ${text} \x1b[0m`);
-  }
-  blue(text) {
-    console.log(`\x1b[${colors.blue}m ${text} \x1b[0m`);
-  }
-  magenta(text) {
-    console.log(`\x1b[${colors.magenta}m ${text} \x1b[0m`);
-  }
-  cyan(text) {
-    console.log(`\x1b[${colors.cyan}m ${text} \x1b[0m`);
-  }
-  white(text) {
-    console.log(`\x1b[${colors.white}m ${text} \x1b[0m`);
+  logColor(code, text) {
+    console.log(`\x1b[${code}m ${text} \x1b[0m`);
   }
 }
 
